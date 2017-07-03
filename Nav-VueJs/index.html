@@ -1,0 +1,45 @@
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Navbar</title>
+</head>
+<body>
+    <div id="mavue">
+        <my-navbar></my-navbar>
+    </div>
+</body>
+<script type="text/x-vue-template" id="menu-flottant">
+
+    <ul class="vpl-menu" v-bind:class="menuclass" v-on:mouseleave="hover=false" ref="menu">
+        <li class="vpl-item vpl-item-main">
+            <button class="vpl-button" id="vpl-main-button" v-on:click="open = !open" v-on:mouseenter="show=true" >
+                <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+            </button>
+        </li>
+        
+            <li class="vpl-item" v-for="button in buttons" v-if="show">
+                <span>{{button.buttonLabel}}</span>
+                <button class="vpl-button" v-on:click="click(button)">
+                    <i :class="button.icone" aria-hidden="true"></i>
+                </button>
+            </li>
+        </transition>
+    </ul>
+      <div id="example-1">
+  <button @click="show = !show">
+    Toggle render
+  </button>
+  <transition name="slide-fade">
+    <p v-if="show">hello</p>
+  </transition>
+</div>
+
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</html>

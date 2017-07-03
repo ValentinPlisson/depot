@@ -1,0 +1,97 @@
+.vpl-menu {
+    display: flex; 
+    flex-direction: column;
+    flex-wrap: nowrap;   
+    justify-content: flex-start;    
+    align-content: stretch;
+    align-items: flex-end;
+    position: absolute;
+    right: 13px;  /* Attention ne pas se mettre trop près du bord ou désactiver la rotation de l'icône de #vpl-main-button */
+    padding: 0px;
+    
+
+    @backgroung-color: #f9e06b;
+    @hover-backgroung-color: orange; /*#f9e10e*/
+    
+    .vpl-item{
+        /* Tous les boutons fauf le premier qui permet d'ouvrir le menu sont masqués*/
+        //display: block; /* Important sinon style des li avec des puces... */
+        display:none;
+        //opacity: 0;
+        //transition: opacity 200ms linear;
+        //pointer-event:none;
+
+            .slide-fade-enter-active {
+              transition: all .3s ease;
+            }
+            .slide-fade-leave-active {
+              transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+            }
+            .slide-fade-enter, .slide-fade-leave-to{
+              transform: translateX(10px);
+              opacity: 0;
+            }
+
+        &-main{
+            display:block;
+            //opacity: 1;
+            //transition: opacity 200ms linear;
+        }
+
+        .vpl-button {
+            background-color: @backgroung-color;
+            transition: background-color 200ms linear;
+            width:55px; 
+            height:55px; 
+            border-radius: 100%; 
+            border:none; 
+            margin-bottom: 5px;
+            
+            
+            &:hover {
+                background-color:  @hover-backgroung-color;
+                transition: background-color 200ms linear;
+                cursor: pointer;
+            }
+        }
+
+        span {
+            font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+            color:white;
+            background-color: black;
+            border-radius: 5px;
+            padding:3px;
+			margin-right:5px;
+        }
+        
+        i {
+            color:black;
+        }
+    }
+
+    &.active, &.hover-active{
+        .vpl-item{
+            display:block;
+            //opacity: 1;
+            //transition: opacity 200ms linear;
+        }
+    }
+ 
+    /* Indication de l'état ouvert locké */
+    &.active #vpl-main-button {
+        background-color:  @hover-backgroung-color;
+        transform:rotate(45deg);
+        transition:transform 100ms;
+    }
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
